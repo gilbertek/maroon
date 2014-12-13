@@ -24,29 +24,29 @@ class AbstractSyntaxTreeTest < Minitest::Test
 
   def test_rolemethod
     type = get_type_of_production { foo.bar }
-    assert_equal(Tokens::rolemethod_call, type)
+    assert_equal(Maroon::Tokens::rolemethod_call, type)
   end
 
   def test_call
     type = get_type_of_production  { foo.baz }
-    assert_equal(Tokens::call, type)
+    assert_equal(Maroon::Tokens::call, type)
   end
 
   def test_initializer
     type = get_type_of_production { AbstractSyntaxTreeTest.new(nil) }
-    assert_equal(Tokens::initializer, type)
+    assert_equal(Maroon::Tokens::initializer, type)
   end
 
   def test_indexer
     type = get_type_of_production  { foo[0] }
-    assert_equal(Tokens::indexer, type)
+    assert_equal(Maroon::Tokens::indexer, type)
   end
 
   def test_block_with_bind
     type = get_type_of_production  { [].each{|role|
       bind :role => :foo
     } }
-    assert_equal(Tokens::block_with_bind, type)
+    assert_equal(Maroon::Tokens::block_with_bind, type)
   end
 
 end

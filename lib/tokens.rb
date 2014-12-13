@@ -2,8 +2,8 @@ module Maroon
   class Tokens
     def self.define_token(name)
       class_eval %{
-      @#{name} = Maroon::Tokens.new :#{name};
-      def Maroon::Tokens.#{name}
+      @#{name} = Tokens.new :#{name};
+      def Tokens.#{name}
         @#{name}
       end
     }

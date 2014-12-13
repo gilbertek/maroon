@@ -45,7 +45,7 @@ else
 end
 
  end
-   def self_method_ast() AbstractSyntaxTree.new(self_method_body, InterpretationContext.new(methods, {  }, {  }, Maroon::Role.new(role_name, 51, "/Users/OK/Dropbox/rubylearn/Rails/Gem/maroon/base/dependency_graph.rb"), Hash.new))
+   def self_method_ast() AbstractSyntaxTree.new(self_method_body, InterpretationContext.new(methods, {  }, {  }, Maroon::Role.new(role_name, 51, "/Users/david/projects/maroon/base/dependency_graph.rb"), Hash.new))
 
  end
    def self_method_definition() method.instance_of?(Array) ? (method[0]) : (method)
@@ -58,7 +58,7 @@ end
   when Maroon::Tokens.rolemethod_call then
     data = production.data
     name = data[1]
-    name = name.name if name.instance_of?(Role)
+    name = name.name if name.instance_of?(Maroon::Role)
     method_name = data[0]
   when Maroon::Tokens.role then
     name = production.data[0]

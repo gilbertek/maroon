@@ -69,7 +69,7 @@ class DependencyGraph
         when Maroon::Tokens.rolemethod_call then
           data = production.data
           name = data[1]
-          name = name.name if name.instance_of?(Role)
+          name = name.name if name.instance_of?(Maroon::Role)
           method_name = data[0]
         when Maroon::Tokens.role then
           name = production.data[0]
