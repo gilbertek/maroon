@@ -42,7 +42,7 @@ class DijkstraTest < Minitest::Test
 #    - east_neighbor and south_neighbor were typographically equivalent,
 #      so I folded them into a single role: Neighbor. That type still
 #      serves the two original roles
-#    - Roles are truly scoped to the use case context
+#    - Maroon::Roles are truly scoped to the use case context
 #    - The Map and Distance_labeled_graph_node roles have to be
 #      duplicated in two Contexts. blah blah blah
 #    - Node inheritance is replaced by injecting two roles

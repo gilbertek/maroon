@@ -40,7 +40,7 @@ c = context :AbstractSyntaxTree do
         body = @production.last()
         if body and exp = (body[1] || body)
           bind = AbstractSyntaxTree.new(exp, @interpretation_context)
-          if (bind.type == Tokens.call) and (bind.data == [:bind])
+          if (bind.type == Maroon::Tokens.call) and (bind.data == [:bind])
             aliases = {}
             list = exp.last[(1..-1)].value[(1..-1)]
             (list.length/2).times{|i|
@@ -66,7 +66,7 @@ c = context :AbstractSyntaxTree do
     end
     def is_initializer?
       if production.is_call?
-        if AbstractSyntaxTree.new(production[1], @interpretation_context).type == Tokens::const
+        if AbstractSyntaxTree.new(production[1], @interpretation_context).type == Maroon::Tokens::const
            if production[2] == :new
              return true
            end
@@ -78,7 +78,7 @@ c = context :AbstractSyntaxTree do
       can_be = production.is_call?
       if can_be
         instance = AbstractSyntaxTree.new(production[1], @interpretation_context)
-        can_be = instance.type == Tokens::role
+        can_be = instance.type == Maroon::Tokens::role
         if can_be
           role = instance.data[0]
           method_name = production[2]
@@ -99,25 +99,25 @@ c = context :AbstractSyntaxTree do
       when nil == production
         nil
       when production.is_block_with_bind?
-        Tokens::block_with_bind
+        Maroon::Tokens::block_with_bind
       when production.is_block?
-        Tokens::block
+        Maroon::Tokens::block
       when production.instance_of?(Fixnum) || production.instance_of?(Symbol)
-        Tokens::terminal
+        Maroon::Tokens::terminal
       when production.is_rolemethod_call?
-        Tokens::rolemethod_call
+        Maroon::Tokens::rolemethod_call
       when production.is_role?
-        Tokens::role
+        Maroon::Tokens::role
       when production.is_indexer?
-        Tokens::indexer
+        Maroon::Tokens::indexer
       when production.is_const?
-        Tokens::const
+        Maroon::Tokens::const
       when production.is_initializer?
-        Tokens::initializer
+        Maroon::Tokens::initializer
       when production.is_call?
-        Tokens::call
+        Maroon::Tokens::call
       else
-        Tokens::other
+        Maroon::Tokens::other
     end
   end
 

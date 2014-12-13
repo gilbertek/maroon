@@ -12,7 +12,7 @@ class AbstractSyntaxTreeTest < Minitest::Test
 
   def get_type_of_production(&b)
     contracts ={}
-    roles = {:foo => Role.new(:foo,__LINE__,__FILE__) }
+    roles = {:foo => Maroon::Role.new(:foo,__LINE__,__FILE__) }
     roles[:foo].methods[:bar] = {}
     interpretation_context = InterpretationContext.new(roles, contracts, nil,nil,nil)
 

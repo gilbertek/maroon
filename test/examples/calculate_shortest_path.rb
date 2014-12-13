@@ -64,7 +64,7 @@ Context.define :CalculateShortestPath do
     def tentative_distance_values
       tentative_distance_values
     end
-    # Role Methods
+    # Maroon::Role Methods
     def tentative_distance
       tentative_distance_values[@distance_labeled_graph_node]
     end
@@ -116,7 +116,7 @@ Context.define :CalculateShortestPath do
       map.unvisited
     end
 
-    # Role Methods
+    # Maroon::Role Methods
     def unvisited_neighbors
       retval = Array.new
       if @south_neighbor != nil
@@ -156,7 +156,7 @@ Context.define :CalculateShortestPath do
       end
     end
 
-    # Role Methods
+    # Maroon::Role Methods
     def tentative_distance
       raise 'self cannot be nil' unless @neighbor_node
       tentative_distance_values[@neighbor_node]

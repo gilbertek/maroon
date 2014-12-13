@@ -1,8 +1,8 @@
-class Tokens
+class Maroon::Tokens
   def self.define_token(name)
     class_eval %{
-      @#{name} = Tokens.new :#{name};
-      def Tokens.#{name}
+      @#{name} = Maroon::Tokens.new :#{name};
+      def Maroon::Tokens.#{name}
         @#{name}
       end
     }
@@ -30,7 +30,7 @@ class Tokens
   define_token :const
 end
 
-class DependencyGraphModel
+class Maroon::DependencyGraphModel
 
   def initialize(dependencies)
     @dependencies = dependencies
@@ -84,7 +84,7 @@ class DependencyGraphModel
   end
 end
 
-class Role
+class Maroon::Role
   def initialize(name, line_no, file_name)
     raise "Roles must indicate a location" if name && ((line_no == nil) || file_name == nil)
     @methods = {}

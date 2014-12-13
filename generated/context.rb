@@ -10,7 +10,7 @@ end
 ctx = self.send(:create_context_factory, name, base_class, default_interaction, block)
 if self.generate_dependency_graph then
   dependencies = {  }
-  ctx.dependencies = DependencyGraphModel.new(DependencyGraph.new(name, ctx.methods, dependencies).create!)
+  ctx.dependencies = Maroon::DependencyGraphModel.new(DependencyGraph.new(name, ctx.methods, dependencies).create!)
 end
 transformer = Transformer.new(name, ctx.methods, ctx.private_interactions, base_class, default_interaction)
 ctx.generated_class = transformer.transform(generate_files_in, @with_contracts)
@@ -112,7 +112,7 @@ end
    def is_definition?(exp) (exp and ((exp[0] == :defn) or (exp[0] == :defs)))
  end
    def role(role_name,&b) file_name, line_no = b.source_location
-@defining_role = Role.new(role_name, line_no, file_name)
+@defining_role = Maroon::Role.new(role_name, line_no, file_name)
 methods[role_name] ||= @defining_role
 if block_given? then
   definitions = get_definitions(b)
@@ -129,7 +129,7 @@ end
 key = (@defining_role == nil) ? (nil) : (@defining_role.name)
 unless @methods.has_key?(key) then
   if (@defining_role == nil) then
-    @methods[key] = Role.new(nil, line_no, file_name)
+    @methods[key] = Maroon::Role.new(nil, line_no, file_name)
   else
     raise(("Undefined role " + @defining_role.name.to_s))
   end

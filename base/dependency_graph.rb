@@ -60,12 +60,12 @@ c = context :DependencyGraph do
         name = nil
         method_name = nil
         case production.type
-          when Tokens.rolemethod_call
+          when Maroon::Tokens.rolemethod_call
             data = production.data
             name = data[1]
-            name = name.name if name.instance_of? Role
+            name = name.name if name.instance_of? Maroon::Role
             method_name = data[0]
-          when Tokens.role
+          when Maroon::Tokens.role
             name = production.data[0]
           else
         end

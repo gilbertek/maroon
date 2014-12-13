@@ -54,7 +54,7 @@ class DependencyGraph
   end
 
   def self_method_ast()
-    AbstractSyntaxTree.new(self_method_body, InterpretationContext.new(methods, {}, {}, Role.new(role_name, 51, "C:/Users/Rune/Documents/GitHub/Moby/base/dependency_graph.rb"), {}))
+    AbstractSyntaxTree.new(self_method_body, InterpretationContext.new(methods, {}, {}, Maroon::Role.new(role_name, 51, "C:/Users/Rune/Documents/GitHub/Moby/base/dependency_graph.rb"), {}))
   end
 
   def self_method_definition()
@@ -66,12 +66,12 @@ class DependencyGraph
       name = nil
       method_name = nil
       case production.type
-        when Tokens.rolemethod_call then
+        when Maroon::Tokens.rolemethod_call then
           data = production.data
           name = data[1]
           name = name.name if name.instance_of?(Role)
           method_name = data[0]
-        when Tokens.role then
+        when Maroon::Tokens.role then
           name = production.data[0]
         else
           # do nothing

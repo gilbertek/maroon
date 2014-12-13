@@ -8,11 +8,11 @@ class AstRewritter
   def rewrite!()
     ast.each_production do |production|
       case production.type
-        when Tokens.rolemethod_call then
+        when Maroon::Tokens.rolemethod_call then
           data = production.data
           production[2] = ((("self_" + data[1].to_s) + "_") + data[0].to_s).to_sym
           production[1] = nil
-        when Tokens.block_with_bind then          
+        when Maroon::Tokens.block_with_bind then
           block = production.last
           block.delete_at(1)
           production.data.each do |local, aliased_role|

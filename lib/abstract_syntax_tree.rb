@@ -8,25 +8,25 @@ class AbstractSyntaxTree
       when (nil == production) then
         nil
       when self_production_is_block_with_bind? then
-        Tokens.block_with_bind
+        Maroon::Tokens.block_with_bind
       when self_production_is_block? then
-        Tokens.block
+        Maroon::Tokens.block
       when (production.instance_of?(Fixnum) or production.instance_of?(Symbol)) then
-        Tokens.terminal
+        Maroon::Tokens.terminal
       when self_production_is_rolemethod_call? then
-        Tokens.rolemethod_call
+        Maroon::Tokens.rolemethod_call
       when self_production_is_role? then
-        Tokens.role
+        Maroon::Tokens.role
       when self_production_is_indexer? then
-        Tokens.indexer
+        Maroon::Tokens.indexer
       when self_production_is_const? then
-        Tokens.const
+        Maroon::Tokens.const
       when self_production_is_initializer? then
-        Tokens.initializer
+        Maroon::Tokens.initializer
       when self_production_is_call? then
-        Tokens.call
+        Maroon::Tokens.call
       else
-        Tokens.other
+        Maroon::Tokens.other
     end
   end
 
@@ -116,7 +116,7 @@ class AbstractSyntaxTree
       body = @production.last
       if body and exp = (body[1] or body) then
         bind = AbstractSyntaxTree.new(exp, @interpretation_context)
-        if (bind.type == Tokens.call) and (bind.data == [:bind]) then
+        if (bind.type == Maroon::Tokens.call) and (bind.data == [:bind]) then
           aliases = {}
           # list = exp.last[(1..-1)] 
           # sourcify 0.5.0 returns s(s(:lit, :p), s(:lit, :role_name))
@@ -149,7 +149,7 @@ class AbstractSyntaxTree
 
   def self_production_is_initializer?()
     if self_production_is_call? then
-      if (AbstractSyntaxTree.new(production[1], @interpretation_context).type == Tokens.const) then
+      if (AbstractSyntaxTree.new(production[1], @interpretation_context).type == Maroon::Tokens.const) then
         return true if (production[2] == :new)
       end
     end
@@ -161,7 +161,7 @@ class AbstractSyntaxTree
     can_be = self_production_is_call?
     if can_be then
       instance = AbstractSyntaxTree.new(production[1], @interpretation_context)
-      can_be = (instance.type == Tokens.role)
+      can_be = (instance.type == Maroon::Tokens.role)
       if can_be then
         role = instance.data[0]
         method_name = production[2]
