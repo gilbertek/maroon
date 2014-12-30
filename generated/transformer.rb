@@ -32,7 +32,7 @@ end
    def role_aliases() @role_aliases
 
  end
-   def interpretation_context() InterpretationContext.new(definitions, contracts, role_aliases, defining_role, @private_interactions)
+   def interpretation_context() Maroon::InterpretationContext.new(definitions, contracts, role_aliases, defining_role, @private_interactions)
 
  end
    def self_method_is_private?() ((not (defining_role == nil)) or private_interactions.has_key?(self_method_name))

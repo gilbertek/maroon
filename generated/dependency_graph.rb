@@ -45,7 +45,7 @@ else
 end
 
  end
-   def self_method_ast() AbstractSyntaxTree.new(self_method_body, InterpretationContext.new(methods, {  }, {  }, Maroon::Role.new(role_name, 51, "/Users/david/projects/maroon/base/dependency_graph.rb"), Hash.new))
+   def self_method_ast() AbstractSyntaxTree.new(self_method_body, Maroon::InterpretationContext.new(methods, {  }, {  }, Maroon::Role.new(role_name, 51, "/Users/david/projects/maroon/base/dependency_graph.rb"), Hash.new))
 
  end
    def self_method_definition() method.instance_of?(Array) ? (method[0]) : (method)

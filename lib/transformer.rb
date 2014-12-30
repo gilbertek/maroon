@@ -39,7 +39,7 @@ class Transformer
   end
 
   def interpretation_context()
-    InterpretationContext.new(definitions, contracts, role_aliases, defining_role, @private_interactions)
+    Maroon::InterpretationContext.new(definitions, contracts, role_aliases, defining_role, @private_interactions)
   end
 
   def self_method_is_private?()

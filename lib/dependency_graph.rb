@@ -54,7 +54,7 @@ class DependencyGraph
   end
 
   def self_method_ast()
-    AbstractSyntaxTree.new(self_method_body, InterpretationContext.new(methods, {}, {}, Maroon::Role.new(role_name, 51, "C:/Users/Rune/Documents/GitHub/Moby/base/dependency_graph.rb"), {}))
+    AbstractSyntaxTree.new(self_method_body, Maroon::InterpretationContext.new(methods, {}, {}, Maroon::Role.new(role_name, 51, "C:/Users/Rune/Documents/GitHub/Moby/base/dependency_graph.rb"), {}))
   end
 
   def self_method_definition()

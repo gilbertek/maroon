@@ -14,7 +14,7 @@ class AbstractSyntaxTreeTest < Minitest::Test
     contracts ={}
     roles = {:foo => Maroon::Role.new(:foo,__LINE__,__FILE__) }
     roles[:foo].methods[:bar] = {}
-    interpretation_context = InterpretationContext.new(roles, contracts, nil,nil,nil)
+    interpretation_context = Maroon::InterpretationContext.new(roles, contracts, nil,nil,nil)
 
     exp = get_sexp &b
     method_call = exp[3]

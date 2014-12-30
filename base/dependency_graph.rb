@@ -48,7 +48,7 @@ c = context :DependencyGraph do
     end
 
     def ast
-      AbstractSyntaxTree.new(method.body, InterpretationContext.new(methods,{},{},Maroon::Role.new(role_name,__LINE__,__FILE__),Hash.new))
+      AbstractSyntaxTree.new(method.body, Maroon::InterpretationContext.new(methods,{},{},Maroon::Role.new(role_name,__LINE__,__FILE__),Hash.new))
       #TODO fix error with Ruby2Ruby conversion (in transformer) of empty hash as last argument
       # def String.new(:abba, {}) end #=> "def\n String.new(:abba, )\n end"
     end
@@ -81,7 +81,7 @@ c = context :DependencyGraph do
 end
 
 # context_class_code = c.generated_class
-# 
+#
 # if context_class_code.instance_of? String
 #   file_name = './generated/dependency_graph.rb'
 #   p "writing to: " + file_name
